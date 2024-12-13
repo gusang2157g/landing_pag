@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Sneakers Shop</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #1e1e1e;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px;
+            color: #f1c40f;
+            text-transform: uppercase;
+            font-size: 1.5em;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .cart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 10px;
+            padding: 10px;
+            background-color: #333;
+            border: 2px solid #f1c40f;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+            margin-left: 10px;
+            text-align: left;
+        }
+
+        .cart-item h4 {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .cart-item p {
+            font-size: 1em;
+            margin: 5px 0;
+            color: #ccc;
+        }
+
+        .cart-item button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: none;
+        }
+
+        .cart-item:hover button {
+            display: block;
+        }
+
+        .checkout-btn {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover {
+            background-color: #2ecc71;
+            text-decoration: none;
+        }
+
+        .cart-empty {
+            color: #f1c40f;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html"><img src="./imagens/logo.png" height="75px" width="80px" alt="Logo"></a>
+        <h1>Sneakers Shop</h1>
+    </header>
+
+    <div class="cart-container">
+
+        <div id="cart-items">
+        </div>
+
+        <a href="compra.html"><button class="checkout-btn">Finalizar Compra</button>
+
+        <div id="cart-empty" class="cart-empty" style="display: none;">
+            Seu carrinho está vazio!
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartEmptyMessage = document.getElementById('cart-empty');
+
+            if (cart.length === 0) {
+                cartEmptyMessage.style.display = 'block';
+                cartItemsContainer.style.display = 'none';
+                return;
+            }
+
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.product}">
+                    <div class="cart-item-details">
+                        <h4>${item.product}</h4>
+                        <p>Preço: R$ ${item.price}</p>
+                    </div>
+                    <button onclick="removeFromCart('${item.product}')">Remover</button>
+                `;
+
+                cartItemsContainer.appendChild(itemElement);
+            });
+
+            const checkoutButton = document.querySelector('.checkout-btn');
+            checkoutButton.style.display = 'block';
+        });
+
+        function removeFromCart(product) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const updatedCart = cart.filter(item => item.product !== product);
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+            window.location.reload();
+        }
+    </script>
+
+</body>
+</html>

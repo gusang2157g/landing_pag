@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive; 
+            background-color: #111;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .form-container {
+            background-color: #222;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #f1c40f;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #ddd;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input:focus {
+            border-color: #f1c40f;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #f1c40f;
+            color: #111;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e74c3c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Finalizar Compra</h2>
+        <form id="compraForm" action="#" method="post">
+            <label for="titular">Nome do Titular:</label>
+            <input type="text" id="titular" name="titular" required>
+
+            <label for="numero">Número do Cartão:</label>
+            <input type="text" id="numero" name="numero" required>
+
+            <label for="data_vencimento">Vencimento:</label>
+            <input type="month" id="data_vencimento" name="data_vencimento" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required>
+
+            <button type="button" onclick="validarFormulario();">Finalizar Compra</button>
+        </form>
+    </div>
+
+    <script>
+        function validarFormulario() {
+            const titular = document.getElementById('titular').value;
+            const numero = document.getElementById('numero').value;
+            const dataVencimento = document.getElementById('data_vencimento').value;
+            const cvv = document.getElementById('cvv').value;
+
+            if (titular === '' || numero === '' || dataVencimento === '' || cvv === '') {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            if (!/^\d{16}$/.test(numero)) {
+                alert('Número do cartão deve ter 16 dígitos.');
+                return;
+            }
+
+            if (!/^\d{3}$/.test(cvv)) {
+                alert('CVV deve ter 3 dígitos.');
+                return;
+            }
+
+            window.location.href = './obrigado_compra.html';
+        }
+    </script>
+
+</body>
+</html>

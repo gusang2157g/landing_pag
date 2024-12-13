@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            color: #f1c40f;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .input-field, .domain-select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .input-field:focus, .domain-select:focus {
+            border-color: #f1c40f;
+            outline: none;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #f1c40f;
+            border: none;
+            border-radius: 4px;
+            color: #111;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .login-btn:hover {
+            background-color: #e74c3c;
+        }
+
+        .forgot-password {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .forgot-password a {
+            color: #f1c40f;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .domain-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .domain-wrapper input {
+            width: 70%;
+        }
+
+        .domain-wrapper select {
+            width: 30%;
+            border-left: 1px solid #ccc;
+            background-color: #333;
+            color: #f1c40f;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Entrar</h2>
+        <form action="#" method="POST">
+            <div class="domain-wrapper">
+                <input type="text" class="input-field" id="username" name="username" placeholder="Usuário" required>
+                <select class="domain-select" id="domain" name="domain">
+                    <option value="gmail.com">@gmail.com</option>
+                    <option value="outlook.com">@outlook.com</option>
+                    <option value="yahoo.com">@yahoo.com</option>
+                    <option value="hotmail.com">@hotmail.com</option>
+                </select>
+            </div>
+            <input type="password" class="input-field" name="password" placeholder="Senha" required>
+            <a href="index.html" class="login-btn">Entrar</a> 
+        </form>
+        <div class="forgot-password">
+            <a href="./senha.html">Esqueceu sua senha?</a>
+        </div>
+    </div>
+
+    <script>
+        const usernameField = document.getElementById('username');
+        const domainSelect = document.getElementById('domain');
+
+        domainSelect.addEventListener('change', function() {
+            const username = usernameField.value;
+            const domain = domainSelect.value;
+            usernameField.value = username.split('@')[0] + '@' + domain;
+        });
+    </script>
+</body>
+</html>

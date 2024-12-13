@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Informações</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive; 
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; 
+        }
+
+        .form-container {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px; 
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+            box-sizing: border-box;
+            overflow-x: auto;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            color: #f1c40f;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0 4px;
+            font-size: 12px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 7px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+            box-sizing: border-box; 
+        }
+
+        input:focus, select:focus {
+            border-color: #f1c40f;
+            outline: none;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 8px;
+            background-color: #f1c40f;
+            border: none;
+            border-radius: 4px;
+            color: #111;
+            font-size: 13px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-register:hover {
+            background-color: #e74c3c;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            display: none;
+        }
+
+        .form-footer {
+            margin-top: 12px;
+            font-size: 10px;
+        }
+
+        .form-footer a {
+            color: #f1c40f;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <form action="#" method="post">
+        <h2>Registro de Informações</h2>
+
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required>
+        
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required>
+        
+        <label for="rg">RG:</label>
+        <input type="text" id="rg" name="rg" required>
+        
+        <label for="data_nascimento">Data de Nascimento:</label>
+        <input type="date" id="data_nascimento" name="data_nascimento" required>
+        
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" required>
+        
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="" disabled selected>Selecione o estado</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="SP">São Paulo</option>
+        </select>
+        
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" required>
+        
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro" required>
+        
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" name="numero" required>
+        
+        <label for="complemento">Complemento:</label>
+        <input type="text" id="complemento" name="complemento">
+
+        <h2>Confirme sua senha</h2>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <label for="confirmar_senha">Confirme sua senha:</label>
+        <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+        
+        <span id="mensagemErro" class="error-message">As senhas não coincidem. Tente novamente.</span>
+        
+
+        <a href="index.html" class="btn-register">Registrar</a>
+
+        <div class="form-footer">
+            <a href="login.html"><p>Já tem uma conta? Faça login aqui</a></p>
+        </div>
+    </form>
+</div>
+
+<script>
+    const senhaField = document.getElementById('senha');
+    const confirmarSenhaField = document.getElementById('confirmar_senha');
+    const mensagemErro = document.getElementById('mensagemErro');
+    
+    confirmarSenhaField.addEventListener('input', function() {
+        if (senhaField.value !== confirmarSenhaField.value) {
+            mensagemErro.style.display = 'block';
+        } else {
+            mensagemErro.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

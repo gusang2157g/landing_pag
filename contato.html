@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Contato</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive; 
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .contact-container {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .contact-container h2 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            color: #f1c40f;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .input-field, .message-textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .input-field:focus, .message-textarea:focus {
+            border-color: #f1c40f;
+            outline: none;
+        }
+
+        .contact-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #f1c40f;
+            border: none;
+            border-radius: 4px;
+            color: #111;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover {
+            background-color: #e74c3c;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .contact-info a {
+            color: #f1c40f;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .message-textarea {
+            height: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h2>Entre em Contato</h2>
+        <form action="#" method="POST">
+            <input type="text" class="input-field" name="name" placeholder="Nome Completo" required>
+            <input type="email" class="input-field" name="email" placeholder="E-mail" required>
+            <textarea class="message-textarea" name="message" placeholder="Mensagem" required></textarea>
+            <a href="index.html" class="contact-btn">Enviar</a>
+        </form>                 
+        <div class="contact-info">
+            <p>Telefone: <strong>(11) 4002-8922</strong></p>
+            <p>E-mail: <strong>SneakersShop@suporte.com.br</strong></p>
+        </div>
+    </div>
+</body>
+</html>

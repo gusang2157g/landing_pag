@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers Shop</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+
+        header {
+            background-color: #fff; 
+            padding: 20px;
+            text-align: center;
+            color: #333; 
+            font-size: 1.5em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: none; 
+        }
+
+        .menu a {
+            color: #333; 
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.2em;
+        }
+
+        .menu a:hover {
+            color: red;
+            text-decoration: none;
+        }
+
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .filters {
+            position: sticky;
+            top: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            flex-basis: 25%;
+            background-color: #222;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .filters h4 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #f1c40f;
+        }
+
+        .filters label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .filters input {
+            margin-right: 8px;
+        }
+
+        .filters .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .filters .filter-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #f1c40f;
+        }
+
+        .filters .checkbox-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filters .checkbox-group input {
+            margin-bottom: 5px;
+        }
+
+        .products {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product {
+            position: relative;
+            display: inline-block;
+            width: 21%;
+            margin: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 50px;
+            border-radius: 12px; 
+            background-color: #fff;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);  
+            transition: all 0.3s ease-in-out;
+        }
+
+        .product img {
+            width: 100%;
+            max-height: 270px; 
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .product:hover .add-to-cart {
+            display: block;
+        }
+
+        .add-to-cart {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #27ae60;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .add-to-cart:hover {
+            background-color: #2ecc71;
+        }
+
+        .product h4 {
+            font-size: 10px;
+            color: #333;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product p {
+            font-size: 15px;
+            color: #666;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html"><img src="./imagens/logo.png" height="75px" width="80px" alt="Logo"></a>
+        <div class="menu">
+            <a href="#">Contato</a>
+            <a href="login.html">Login</a>
+            <a href="registro.html">Registro</a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <aside class="filters">
+            <h4>Filtros</h4>
+
+            <div class="filter-section">
+                <h5 class="filter-title">Tamanho</h5>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="size" value="37-38"> 37-38
+                    </label>
+                    <label>
+                        <input type="checkbox" name="size" value="39-40"> 39-40
+                    </label>
+                    <label>
+                        <input type="checkbox" name="size" value="41-42"> 41-42
+                    </label>
+                    <label>
+                        <input type="checkbox" name="size" value="43-44"> 43-44
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h5 class="filter-title">Cor</h5>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="color" value="Preto"> Preto    
+                    </label>
+                    <label>
+                        <input type="checkbox" name="color" value="Roxo"> Roxo
+                    </label>
+                    <label>
+                        <input type="checkbox" name="color" value="Branco"> Branco
+                    </label>
+                    <label>
+                        <input type="checkbox" name="color" value="Azul"> Azul
+                    </label>
+                    <label>
+                        <input type="checkbox" name="color" value="Vermelho"> Vermelho
+                    </label>
+                    <label>
+                        <input type="checkbox" name="color" value="Rosa"> Rosa
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h5 class="filter-title">Faixa de Preço</h5>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="price" value="200-500"> R$200 - R$500
+                    </label>
+                    <label>
+                        <input type="checkbox" name="price" value="500-999"> R$500 - R$999
+                    </label>
+                    <label>
+                        <input type="checkbox" name="price" value="1000"> Acima de R$1000
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h5 class="filter-title">Opções</h5>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="option" value="Frete Grátis"> Frete Grátis
+                    </label>
+                    <label>
+                        <input type="checkbox" name="option" value="Entrega Amanhã"> Entrega Amanhã
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+    
+        <section class="products">
+            <div class="product-container">
+                
+                <div class="product" data-keywords="Tênis, Preto" data-options="Frete Grátis, Entrega Amanhã" data-price="500,00" data-color="Preto" data-size="39-40">
+                    <img src="./imagens/Knicks.png" alt="Ous Söusa Nba New York Knicks Imperial">
+                    <h4>Ous Söusa Nba New York Knicks Imperial</h4>
+                    <p>R$ 500,00</p>
+                    <button class="add-to-cart" data-product="Ous Söusa Nba New York Knicks Imperial" data-price="500,00" data-image="./imagens/Knicks.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Roxo, Branco" data-options="Entrega Amanhã" data-price="319,99" data-color="Roxo, Branco" data-size="41-42">
+                    <img src="./imagens/Chorão.png" alt="Tênis Qix Chorão Park Roxo">
+                    <h4>Tênis Qix Chorão Park Roxo</h4>
+                    <p>R$319,99</p>
+                    <button class="add-to-cart" data-product="Qix Chorão Park Roxo" data-price="319,99" data-image="../site/imagens/Chorão.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Preto, Roxo, Azul, Rosa" data-options="Frete Grátis, Entrega Amanhã" data-price="349,99" data-color="Preto, Roxo, Azul, Rosa" data-size="39-40">
+                    <img src="./imagens/Galaxy.png" alt="Tesla Galaxy">
+                    <h4>Tesla Galaxy</h4>
+                    <p>R$349,99</p>
+                    <button class="add-to-cart" data-product="Tesla Galaxy" data-price="349,99" data-image="../site/imagens/Galaxy.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Vermelho" data-options="Frete Grátis" data-price="1000,00" data-color="Vermelho" data-size="41-42">
+                    <img src="./imagens/Sonic.png" alt="Nike SB - Sonic style">
+                    <h4>Nike SB - Sonic Style</h4>
+                    <p>R$1000,00</p>
+                    <button class="add-to-cart" data-product="Nike SB - Sonic Style" data-price="1000,00" data-image="../site/imagens/Sonic.png">Adicionar ao Carrinho</button>
+                </div>
+
+                
+                <div class="product" data-keywords="Tênis, Preto, Roxo, Branco" data-options="Entrega Amanhã" data-price="249,99" data-color="Preto, Roxo, Branco" data-size="39-40">
+                    <img src="./imagens/Sonar.png" alt="Freeday Sonar Preto Roxo">
+                    <h4>Freeday Sonar Preto Roxo</h4>
+                    <p>R$249,99</p>
+                    <button class="add-to-cart" data-product="Freeday Sonar Preto Roxo" data-price="249,99" data-image="../site/imagens/Sonar.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Preto, Verde" data-options="Frete Grátis" data-price="399,99" data-color="Preto, Verde" data-size="37-38">
+                    <img src="./imagens/Star wars.png" alt="Dc Versatile Star Wars">
+                    <h4>Dc Versatile Star Wars</h4>
+                    <p>R$399,99</p>
+                    <button class="add-to-cart" data-product="Dc Versatile Star Wars" data-price="399,99" data-image="../site/imagens/Star wars.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Preto, Rosa, Branco" data-options="Frete Grátis" data-price="249,99" data-color="Preto, Rosa, Branco" data-size="37-38">
+                    <img src="./imagens/ECO XL.png" alt="Freeday Flip Eco XL Preto Rosa">
+                    <h4>Freeday Flip Eco XL Preto Rosa</h4>
+                    <p>R$249,99</p>
+                    <button class="add-to-cart" data-product="Freeday Flip Eco XL Preto Rosa" data-price="249,99" data-image="../site/imagens/ECO XL.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Branco, Rosa, Azul" data-options="Entrega Amanhã" data-price="549,99" data-color="Branco, Rosa, Azul" data-size="37-38">
+                    <img src="./imagens/Trinity.png" alt="Puma Trinity Branco Rosa">
+                    <h4>Puma Trinity Branco Rosa</h4>
+                    <p>R$549,99</p>
+                    <button class="add-to-cart" data-product="Puma Trinity Branco Rosa" data-price="549,99" data-image="../site/imagens/Trinity.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Azul" data-options="Entrega Amanhã" data-price="329,99" data-color="Azul" data-size="41-42">
+                    <img src="./imagens/Hertz.png" alt="Tesla Hertz Aqua">
+                    <h4>Tesla Hertz Aqua</h4>
+                    <p>R$329,99</p>
+                    <button class="add-to-cart" data-product="Tesla Hertz Aqua" data-price="329,99" data-image="../site/imagens/Hertz.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Branco, Rosa" data-options="Frete Grátis" data-price="359,99" data-color="Branco, Rosa" data-size="39-40">
+                    <img src="./imagens/Mauvee.png" alt="Hocks Puff Mauvee Branco Rosa">
+                    <h4>Hocks Puff Mauvee Branco Rosa</h4>
+                    <p>R$359,99</p>
+                    <button class="add-to-cart" data-product="Hocks Puff Mauvee Branco Rosa" data-price="359,99" data-image="../site/imagens/Mauvee.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Preto, Branco" data-options="Entrega Amanhã" data-price="399,99" data-color="Preto, Branco" data-size="41-42">
+                    <img src="./imagens/Refletivo.png" alt="Tesla Coil Preto Refletivo Mesclado">
+                    <h4>Tesla Coil Preto Refletivo Mesclado</h4>
+                    <p>R$399,99</p>
+                    <button class="add-to-cart" data-product="Tesla Coil Preto Refletivo Mesclado" data-price="399,99" data-image="../site/imagens/Refletivo.png">Adicionar ao Carrinho</button>
+                    </div>
+
+                <div class="product" data-keywords="Tênis, Preto, Azul" data-options="Frete Grátis" data-price="399,99" data-color="Preto, Azul" data-size="43-44">
+                    <img src="./imagens/coil.png" alt="Tesla Coil Preto Preto Azul">
+                    <h4>Tesla Coil Preto Azul</h4>
+                    <p>R$399,99</p>
+                    <button class="add-to-cart" data-product="Tesla Coil Preto Azul" data-price="399,99" data-image="../site/imagens/coil.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Roxo, Preto" data-options="Frete Grátis" data-price="439,99" data-color="Roxo, Preto" data-size="37-38">
+                    <img src="./imagens/Imigrante.png" alt="Ous Imigrante Essencial Serie X Preto Furta Cor">
+                    <h4>Ous Imigrante Essencial Serie X Preto Furta Cor</h4>
+                    <p>R$439.99</p>
+                    <button class="add-to-cart" data-product="Our Imigrante Essencial Serie X Preto Furta Cor" data-price="439,99" data-image="../site/imagens/Imigrante.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Preto" data-options="Entrega Amanhã" data-price="359,99" data-color="Preto" data-size="43-44">
+                    <img src="./imagens/Vutang.png" alt=" Hocks Puff Preto Vutang">
+                <h4> Hocks Puff Preto Vutang</h4>
+                <p>R$359,99</p>
+                <button class="add-to-cart" data-product="Hocks Puff Preto Vutang" data-price="359,99" data-image="../site/imagens/Vutang.png">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product" data-keywords="Tênis, Preto, Branco" data-options="Frete Grátis" data-price="489,99" data-color="Preto, Branco" data-size="43-44">
+                    <img src="./imagens/Delux.png" alt="Tesla Coil Delux Preto Branco">
+                <h4>Tesla Coil Delux Preto Branco</h4>
+                <p>R$489,99</p>
+                <button class="add-to-cart" data-product="Tesla Coil Delux Preto Branco" data-price="489,99" data-image="../site/imagens/Delux.png">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+                document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const product = event.target.dataset.product;
+                const price = event.target.dataset.price;
+                const image = event.target.dataset.image;
+
+
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push({ product, price, image });
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+
+                window.location.href = 'carrinho.html';
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+    function applyFilters() {
+        const selectedSizes = Array.from(document.querySelectorAll('input[name="size"]:checked')).map(input => input.value);
+        const selectedColors = Array.from(document.querySelectorAll('input[name="color"]:checked')).map(input => input.value);
+        const selectedPriceRanges = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(input => input.value);
+        const selectedOptions = Array.from(document.querySelectorAll('input[name="option"]:checked')).map(input => input.value);
+
+        const products = document.querySelectorAll('.product');
+
+        products.forEach(product => {
+            const productSize = product.getAttribute('data-size').split(', ');
+            const productColor = product.getAttribute('data-color').split(', ');
+            const productPrice = parseFloat(product.getAttribute('data-price'));
+            const productOptions = product.getAttribute('data-options').split(', ');
+
+            const isSizeValid = selectedSizes.length === 0 || selectedSizes.some(size => productSize.includes(size));
+            const isColorValid = selectedColors.length === 0 || selectedColors.some(color => productColor.includes(color));
+            const isPriceValid = selectedPriceRanges.length === 0 || selectedPriceRanges.some(priceRange => {
+                const [minPrice, maxPrice] = priceRange.split('-').map(p => p.replace('R$', '').replace(',', '.').trim());
+                const min = parseFloat(minPrice);
+                const max = maxPrice === '+' ? Infinity : parseFloat(maxPrice);
+                return productPrice >= min && productPrice <= max;
+            });
+            const isOptionValid = selectedOptions.length === 0 || selectedOptions.some(option => productOptions.includes(option));
+
+            if (isSizeValid && isColorValid && isPriceValid && isOptionValid) {
+                product.style.display = 'inline-block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+    document.querySelectorAll('.filters input').forEach(input => {
+        input.addEventListener('change', applyFilters);
+    });
+
+
+    applyFilters();
+});
+
+    </script>
+
+</body>
+</html>
